@@ -1,0 +1,10 @@
+name = "gucci"
+version = "0.1.0"
+defaultTargets = ["gucci"]
+
+[[lean_lib]]
+name = "Gucci"
+
+[[lean_exe]]
+name = "gucci"
+root = "Main"
