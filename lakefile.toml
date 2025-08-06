@@ -1,7 +1,10 @@
-name = "gucci"
+name = "ray"
 version = "0.1.0"
-defaultTargets = ["gucci"]
+defaultTargets = ["ray"]
+
+[[lean_lib]]
+name = "Raytracing"
 
 [[lean_exe]]
-name = "gucci"
+name = "ray"
 root = "Main"

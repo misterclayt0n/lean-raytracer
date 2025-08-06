@@ -1,1 +1,1 @@
-# gucci
+# Raytracer in lean
