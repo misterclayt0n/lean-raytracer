@@ -18,6 +18,9 @@ instance : Neg Vec3 where
 def addAssign (v1 : Vec3) (v2 : Vec3) : Vec3 :=
   ⟨v1.x + v2.x, v1.y + v2.y, v1.z + v2.z⟩
 
+def addFloatAssign (v1 : Vec3) (f : Float) : Vec3 :=
+  ⟨v1.x + f, v1.y + f, v1.z + f⟩
+
 def subAssign (v1 : Vec3) (v2 : Vec3) : Vec3 :=
   ⟨v1.x - v2.x, v1.y - v2.y, v1.z - v2.z⟩
   
@@ -43,6 +46,12 @@ def length (v : Vec3) : Float :=
 instance : Add Vec3 where
   add := addAssign
 
+instance : HAdd Vec3 Float Vec3 where
+  hAdd := addFloatAssign
+
+instance : HAdd Vec3 Nat Vec3 where
+  hAdd v n := addFloatAssign v n.toFloat
+
 instance : Sub Vec3 where
   sub := subAssign
 
@@ -58,6 +67,12 @@ instance : HMul Vec3 Float Vec3 where
 instance : HMul Float Vec3 Vec3 where
   hMul t v := mulAssignScalar v t 
 
+instance : HMul Nat Vec3 Vec3 where
+  hMul t v := mulAssignScalar v t.toFloat
+
+instance : HMul Vec3 Nat Vec3 where
+  hMul v t := mulAssignScalar v t.toFloat 
+  
 instance : HDiv Vec3 Float Vec3 where
   hDiv := divAssignScalar
 
