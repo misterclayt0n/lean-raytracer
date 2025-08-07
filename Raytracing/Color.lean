@@ -30,7 +30,17 @@ def toPPMLine (c : Color) : String :=
   let (r, g, b) := toBytes c
   s!"{r} {g} {b}"
 
+def hit_sphere (center : Point3) (radius : Float) (ray : Ray) : Bool :=
+  let oc           := center - ray.orig
+  let a            := Vec3.dot ray.dir ray.dir
+  let b            := -2.0 * Vec3.dot ray.dir oc
+  let c            := Vec3.dot oc oc - radius^2
+  let discriminant := b^2 - 4.0*a*c
+  discriminant >= 0
+
 def ray_color (r : Ray) : Color :=
+  if hit_sphere ⟨0, 0, -1⟩ 0.5 r then ⟨1, 0, 0⟩ else
+  
   let unit_dir := Vec3.normalize r.dir
   let a        := 0.5 * (unit_dir.y + 1.0)
   let white    := Color.mk 1.0 1.0 1.0

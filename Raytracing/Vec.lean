@@ -76,6 +76,9 @@ instance : HMul Vec3 Nat Vec3 where
 instance : HDiv Vec3 Float Vec3 where
   hDiv := divAssignScalar
 
+def dot (v1 v2 : Vec3) : Float :=
+  v1.x * v2.x + v1.y * v2.y + v1.z * v2.z
+
 def cross (v1 v2 : Vec3) : Vec3 :=
   ⟨v1.y * v2.z - v1.z * v2.y,
    v1.z * v2.x - v1.x * v2.z,
